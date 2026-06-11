@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f7f5;
+  --foreground: #171717;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.app-background {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.app-background::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("/image.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #fed7aa;
+  color: #171717;
+}
+
+.hero-kicker-3d {
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9),
+    0 3px 8px rgba(234, 88, 12, 0.15);
+}
+
+.hero-title-3d {
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.92),
+    0 2px 0 rgba(232, 224, 212, 0.72),
+    0 7px 16px rgba(194, 97, 27, 0.12),
+    0 18px 36px rgba(20, 20, 20, 0.16);
+}
+
+.hero-button-3d {
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.28),
+    0 2px 6px rgba(124, 45, 18, 0.34);
+}
+
+.hero-photo-frame {
+  isolation: isolate;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(255, 237, 213, 0.4) 42%,
+      rgba(23, 23, 23, 0.08) 100%
+    ),
+    #e5e5e5;
+  box-shadow:
+    0 20px 60px rgba(20, 20, 20, 0.12),
+    0 0 42px rgba(249, 115, 22, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.hero-photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0.06) 42%,
+      rgba(249, 115, 22, 0.16) 100%
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.72),
+    inset 0 -28px 52px rgba(255, 255, 255, 0.12);
+}
+
+.hero-photo-image {
+  opacity: 0.75;
+}
