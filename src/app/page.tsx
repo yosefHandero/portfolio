@@ -1,7 +1,7 @@
 import Image from "next/image";
 import ContactPanel from "./ContactPanel";
 
-type ProjectIconVariant = "banking" | "market" | "movie";
+type ProjectIconVariant = "banking" | "market" | "movie" | "care";
 
 type Project = {
   title: string;
@@ -31,6 +31,13 @@ const projects: Project[] = [
       "A cinematic movie browsing app with watchlists, detail pages, genres, cast information, ratings, and similar movie recommendations.",
     icon: "movie",
     url: "https://movie-app-five-lovat-63.vercel.app/",
+  },
+  {
+    title: "CareTrace",
+    description:
+      "A calm caregiver tracking app for logging medications, symptoms, vitals, meals, hydration, reminders, and notes, then turning scattered care details into a clear visit summary for doctors or family.",
+    icon: "care",
+    url: "https://caretrace-lime.vercel.app/",
   },
 ];
 
@@ -111,6 +118,30 @@ function ProjectIcon({ variant }: { variant: ProjectIconVariant }) {
     );
   }
 
+  if (variant === "care") {
+    return (
+      <svg
+        aria-hidden="true"
+        className="h-14 w-14"
+        viewBox="0 0 64 64"
+        fill="none"
+      >
+        <path
+          d="M32 12l16 6v12c0 12-7 19-16 22-9-3-16-10-16-22V18l16-6Z"
+          className="fill-white stroke-neutral-950"
+          strokeWidth="2.4"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M32 41c-5-3.4-9-6.6-9-11a4.6 4.6 0 0 1 9-1.6A4.6 4.6 0 0 1 41 30c0 4.4-4 7.6-9 11Z"
+          className="fill-orange-500 stroke-orange-500"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+
   return (
     <svg
       aria-hidden="true"
@@ -180,44 +211,31 @@ export default function Home() {
           Projects
         </h2>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           {projects.map((project) => (
             <article
               key={project.title}
-              className="group rounded-[24px] border border-white/80 bg-white/70 p-4 shadow-[0_18px_45px_rgba(20,20,20,0.10)] backdrop-blur-sm transition duration-300 [transform-style:preserve-3d] hover:-translate-y-2 hover:shadow-[0_24px_70px_rgba(20,20,20,0.16)] hover:[transform:translateY(-0.5rem)_rotateX(2deg)_rotateY(-2deg)_scale(1.01)]"
+              className="group flex flex-col rounded-[20px] border border-white/80 bg-white/70 p-4 shadow-[0_18px_45px_rgba(20,20,20,0.10)] backdrop-blur-sm transition duration-300 [transform-style:preserve-3d] hover:-translate-y-2 hover:shadow-[0_24px_70px_rgba(20,20,20,0.16)] hover:[transform:translateY(-0.5rem)_rotateX(2deg)_rotateY(-2deg)_scale(1.01)]"
             >
-              <div className="overflow-hidden rounded-[18px] border border-neutral-100 bg-[#f3f2ef]">
-                <div className="relative aspect-[4/3]">
-                  <div className="absolute inset-0 bg-[linear-gradient(135deg,#fff7ed_0%,#ffffff_48%,#e5e5e5_100%)]" />
-                  <div className="absolute inset-x-5 top-5 h-6 rounded-full bg-white/80 shadow-sm" />
-                  <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-white/90 p-4 shadow-lg transition duration-300 group-hover:scale-[1.03]">
-                    <div className="mb-3 h-2 w-16 rounded-full bg-orange-400" />
-                    <div className="space-y-2">
-                      <div className="h-2 rounded-full bg-neutral-200" />
-                      <div className="h-2 w-3/4 rounded-full bg-neutral-200" />
-                    </div>
-                  </div>
-                  <div className="absolute right-5 top-14 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/80 bg-white/90 text-neutral-950 shadow-lg transition duration-300 group-hover:-translate-y-1 group-hover:scale-105">
-                    <ProjectIcon variant={project.icon} />
-                  </div>
-                </div>
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/80 bg-white/90 text-neutral-950 shadow-[0_8px_20px_rgba(20,20,20,0.12)] transition duration-300 group-hover:-translate-y-1 group-hover:scale-105">
+                <ProjectIcon variant={project.icon} />
               </div>
-              <div className="pt-5">
-                <h3 className="text-xl font-semibold text-neutral-950">
+              <div className="pb-4 pt-4">
+                <h3 className="text-lg font-semibold text-neutral-950">
                   {project.title}
                 </h3>
-                <p className="mt-3 min-h-20 text-sm leading-6 text-neutral-600">
+                <p className="mt-2 text-sm leading-6 text-neutral-600">
                   {project.description}
                 </p>
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-5 inline-flex h-11 w-full items-center justify-center rounded-full bg-orange-500 px-5 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(249,115,22,0.22)] transition hover:bg-orange-600"
-                >
-                  Visit Site
-                </a>
               </div>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-auto inline-flex h-10 w-full items-center justify-center rounded-full bg-orange-500 px-4 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(249,115,22,0.22)] transition hover:bg-orange-600"
+              >
+                Visit Site
+              </a>
             </article>
           ))}
         </div>
