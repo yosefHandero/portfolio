@@ -211,8 +211,8 @@ export default function Home() {
           Projects
         </h2>
 
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {projects.map((project) => (
+  <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+  {[...projects].reverse().map((project) => (
             <article
               key={project.title}
               className="group flex flex-col rounded-[20px] border border-white/80 bg-white/70 p-4 shadow-[0_18px_45px_rgba(20,20,20,0.10)] backdrop-blur-sm transition duration-300 [transform-style:preserve-3d] hover:-translate-y-2 hover:shadow-[0_24px_70px_rgba(20,20,20,0.16)] hover:[transform:translateY(-0.5rem)_rotateX(2deg)_rotateY(-2deg)_scale(1.01)]"
